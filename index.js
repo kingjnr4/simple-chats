@@ -7,10 +7,13 @@ export function bootstrap() {
     const PORT = 3000;
     const app = express();
     const server = createServer(app);
+    app.use(express.json())
     server.listen(PORT, () =>
       console.log(`Server up on http://localhost:${PORT}`)
     );
     bootstrapSockets(server);
+
+    return app
   } catch (e) {
     console.log(e);
     process.exit("1");
